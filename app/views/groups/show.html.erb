@@ -30,9 +30,13 @@
     <tbody>
       <% @posts.each do |p| %>
       <tr>
-        <td><%= p.content %></td>
+        <td><%= link_to(p.content, group_post_path(p.group,p)) %></td>
         <td><%= p.user.email %></td>
         <td><%= p.created_at %></td>
+        <% if current_user && current_user == p.user %>
+        <td><%= link_to("Edit",edit_group_post_path(p.group,p)) %></td>
+        <td><%= link_to("Delete",group_post_path(p.group,p), method: :delete, data:{confirm:"Are you sure?"}) %></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>

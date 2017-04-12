@@ -20,6 +20,31 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @group = @post.group
+  end
+
+  def edit
+    @group = Group.find(params[:group_id])
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to group_post_path(@post.group,@post)
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @group = @post.group
+
+    @post.destroy
+      redirect_to group_path(@group)
+
+  end
+
     private
 
     def post_params

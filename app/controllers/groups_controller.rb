@@ -41,9 +41,12 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-
-    redirect_to groups_path, alert:"Delete Success"
-
+    if @group.destroy
+      flash[:notice] = "Delete Success"
+    else
+      flash[:alert] = " Delete Fail"
+    end
+      redirect_to groups_path
   end
 
   def join
