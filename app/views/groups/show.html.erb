@@ -1,10 +1,19 @@
 <div class="col-md-12">
   <div class="group">
+    <span class="pull-right">
+      <% if current_user && current_user.is_member_of?(@group) %>
+      <label class="label label-success">IsMember</label>
+      <% else %>
+      <label class="label label-warning">NotMember</label>
+      <% end %>
+    </span>
+
     <%= link_to("Write a Post", new_group_post_path(@group), class:"btn btn-primary pull-right") %>
     <% if current_user && current_user==@group.user %>
     <%= link_to("Edit", edit_group_path(@group), class: "btn btn-primary pull-right")%>
     <% end %>
   </div>
+
   <h2><%= @group.title %></h2>
   <p><%= @group.description %></p>
 
