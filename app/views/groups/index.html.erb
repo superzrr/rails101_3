@@ -20,12 +20,12 @@
         <td><%= g.title %></td>
         <td><%= g.description %></td>
         <td><%= g.user.email %></td>
-        <% if current_user && current_user==g.user %>
         <td>
-          <%= link_to("Edit", edit_group_path(g),class:"btn btn-sm btn-default") %>
-          <%= link_to("Delete" ,group_path(g),class:"btn btn-sm btn-default",method: :delete,data: { confirm:"Are you sure?"} )%>
+          <% if current_user && current_user==g.user %>
+            <%= link_to("Edit", edit_group_path(g),class:"btn btn-sm btn-default") %>
+            <%= link_to("Delete" ,group_path(g),class:"btn btn-sm btn-default",method: :delete,data: { confirm:"Are you sure?"} )%>
+          <% end %>
         </td>
-        <% end %>
       </tr>
       <% end %>
     </tbody>
