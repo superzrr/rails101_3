@@ -14,7 +14,7 @@
     <tbody>
       <% @posts.each do |p| %>
       <tr>
-        <td><%= p.content %></td>
+        <td><%= render_post_ceonten(p) %></td>
         <td><%= p.group.title %></td>
         <td><%= p.updated_at %></td>
         <td><%= link_to("Edit", edit_group_post_path(p.group,p),class:"btn btn-default btn-xs") %></td>
@@ -23,4 +23,7 @@
       <% end %>
     </tbody>
   </table>
+  <div class="text-center">
+    <%= will_paginate(@posts)%>
+  </div>
 </div>
