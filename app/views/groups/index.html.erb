@@ -14,20 +14,8 @@
     </thead>
 
     <tbody>
-      <% @groups.each do |g| %>
-        <tr>
-        <td>#</td>
-        <td><%= link_to(g.title, group_path(g)) %></td>
-        <td><%= render_group_description(g) %></td>
-        <td><%= g.user.email %></td>
-        <td>
-          <% if current_user && current_user==g.user %>
-            <%= link_to("Edit", edit_group_path(g),class:"btn btn-sm btn-default") %>
-            <%= link_to("Delete" ,group_path(g),class:"btn btn-sm btn-default",method: :delete,data: { confirm:"Are you sure?"} )%>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
+    <%= render :partial => "group_item", :collection => @groups, :as => :g %>
+    
     </tbody>
   </table>
 </div>

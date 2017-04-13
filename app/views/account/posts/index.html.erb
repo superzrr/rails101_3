@@ -14,10 +14,10 @@
     <tbody>
       <% @posts.each do |p| %>
       <tr>
-        <td><%= render_post_ceonten(p) %></td>
+        <td><%= render_post_content(p) %></td>
         <td><%= p.group.title %></td>
         <td><%= p.updated_at %></td>
-        <td><%= link_to("Edit", edit_group_post_path(p.group,p),class:"btn btn-default btn-xs") %></td>
+        <td><%= link_to("Edit", edit_account_post_path(p),class:"btn btn-default btn-xs") %></td>
         <td><%= link_to("Delete", account_post_path(p), method: :delete, data:{confirm:"Are you sure?"}, class:"btn btn-default btn-xs") %></td>
       </tr>
       <% end %>
